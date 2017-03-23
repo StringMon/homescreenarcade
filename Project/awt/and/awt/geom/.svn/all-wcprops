@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/geom
+END
+AffineTransform.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/AffineTransform.java
+END
+QuadCurve2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/geom/QuadCurve2D.java
+END
+RectangularShape.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/geom/RectangularShape.java
+END
+NoninvertibleTransformException.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/NoninvertibleTransformException.java
+END
+GeneralPath.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/GeneralPath.java
+END
+Rectangle2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/Rectangle2D.java
+END
+Arc2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/Arc2D.java
+END
+CubicIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/CubicIterator.java
+END
+LineIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/LineIterator.java
+END
+RoundRectangle2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/RoundRectangle2D.java
+END
+QuadIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/QuadIterator.java
+END
+IllegalPathStateException.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/IllegalPathStateException.java
+END
+PathIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/PathIterator.java
+END
+RectIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/RectIterator.java
+END
+EllipseIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/EllipseIterator.java
+END
+Area.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/geom/Area.java
+END
+Dimension2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/Dimension2D.java
+END
+Line2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/geom/Line2D.java
+END
+RoundRectIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/RoundRectIterator.java
+END
+ArcIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/ArcIterator.java
+END
+Point2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/Point2D.java
+END
+CubicCurve2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/geom/CubicCurve2D.java
+END
+FlatteningPathIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/FlatteningPathIterator.java
+END
+Path2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/geom/Path2D.java
+END
+Ellipse2D.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/8/branches/alpha-demo/src/and/awt/geom/Ellipse2D.java
+END

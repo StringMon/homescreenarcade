@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/15/branches/alpha-demo/src/and/awt/image
+END
+FilteredImageSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/image/FilteredImageSource.java
+END
+BufferedImage.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/15/branches/alpha-demo/src/and/awt/image/BufferedImage.java
+END
+ImageProducer.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/image/ImageProducer.java
+END
+ReplicateScaleFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/image/ReplicateScaleFilter.java
+END
+ImageFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/image/ImageFilter.java
+END
+ImageObserver.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/image/ImageObserver.java
+END
+AreaAveragingScaleFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/image/AreaAveragingScaleFilter.java
+END
+ImageConsumer.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/14/branches/alpha-demo/src/and/awt/image/ImageConsumer.java
+END

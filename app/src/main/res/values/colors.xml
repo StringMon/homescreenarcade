@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#88f</color>
+    <color name="color_debug">#0000</color>
+    <color name="notif_text">#fff</color>
+
+	<!-- Tetris -->
+    <color name="black_overlay">#66000000</color>
+    <color name="darkbluegreen">#FF408080</color>
+    <color name="yellow">#ffffff30</color>
+    <color name="transparent">#00000000</color>
+    <color name="holo_grey">#FF4D4D4D</color>
+    <color name="white">#FFFF</color>
+</resources>
