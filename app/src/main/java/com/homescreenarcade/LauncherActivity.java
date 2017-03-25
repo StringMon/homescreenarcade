@@ -14,6 +14,9 @@ import com.homescreenarcade.pinball.PinballWallpaper;
 import com.homescreenarcade.invaders.InvadersWallpaper;
 import com.homescreenarcade.blockdrop.BlockDropWallpaper;
 
+/**
+ * A simple activity to get the user started playing games on their home screen.
+ */
 public class LauncherActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -24,9 +27,16 @@ public class LauncherActivity extends AppCompatActivity {
         setContentView(R.layout.launcher_activity);
 
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            // ACTION_CHANGE_LIVE_WALLPAPER wasn't supported before JB, so hide the buttons. They'll 
+            // just have to figure out how to set the LWPs themselves.
             findViewById(R.id.invaders).setVisibility(View.GONE);
             findViewById(R.id.block_drop).setVisibility(View.GONE);
+            findViewById(R.id.mazeman).setVisibility(View.GONE);
+            findViewById(R.id.pinball).setVisibility(View.GONE);
+            
         } else {
+            // JB or later: set up the LWP-shortcut buttons
+            
             findViewById(R.id.invaders).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

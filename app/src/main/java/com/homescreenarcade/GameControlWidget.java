@@ -5,7 +5,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 
 /**
- * Common ancestor for widgets that control gameplay.
+ * Common ancestor for widgets that control gameplay. Pretty standard appwidget stuff.
  * 
  * Created by Sterling on 2017-03-09.
  */
@@ -13,7 +13,6 @@ import android.content.Context;
 abstract class GameControlWidget extends AppWidgetProvider {
     protected abstract void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                    int appWidgetId);
-    
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them

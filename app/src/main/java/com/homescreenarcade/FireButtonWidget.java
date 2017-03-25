@@ -7,17 +7,15 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 
 /**
- * Implementation of App Widget functionality.
+ * Simple one-button widget for "Fire" functionality.
  */
 public class FireButtonWidget extends GameControlWidget {
     protected void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
-        // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.fire_button_widget);
         views.setOnClickPendingIntent(R.id.fire_btn,
                 PendingIntent.getBroadcast(context, 0, new Intent(ArcadeCommon.ACTION_FIRE), 0));
                 
-        // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 

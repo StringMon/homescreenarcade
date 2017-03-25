@@ -32,7 +32,14 @@ import java.util.TimerTask;
 import static android.support.v4.app.NotificationCompat.VISIBILITY_SECRET;
 
 /**
- * Ancestor class for game wallpapers containing common interface behaviors.
+ * Ancestor class for game wallpapers containing common interface behaviors. 
+ * 
+ * This is the core of Home Screen Arcade, the class that ties it all together:
+ * - It serves as a base class for the live wallpaper services that implement specific games.
+ * - It receives action broadcasts from the game-control widgets, passing them along to its 
+ *   descendants as method calls.
+ * - Broadcasts from the actual game code are also received here to update score, level, and other 
+ *   game status, and are then displayed as a heads-up notification.
  * 
  * Created by Sterling on 2017-03-05.
  */
@@ -48,23 +55,31 @@ public abstract class GameWallpaperService
     public static final int STATE_PAUSED = 3;
     public static final int STATE_GAME_OVER = 4;
     
-    protected static int GAME_LOOP_MS = 33;
     private static boolean previewActive = false;
 
-    protected int titleResID = 0;
-    protected int notifIconResID = 0;
-    protected int lifeIconResId = 0;
-    
+    /*
+        These four constants should be set by subclasses at startup.
+     */
+    protected static int GAME_LOOP_MS = 33; // Milliseconds between game canvas/logic updates
+    protected int titleResID = 0;           // Title of the status notification (String resource)
+    protected int notifIconResID = 0;       // Status notification icon (Drawable resource)
+    protected int lifeIconResId = 0;        // If the game has "lives", this is the icon to represent them (drawable resource)
+
+    /*
+        Methods to be implemented by subclasses:
+         - draw() gets the game graphics for display on the wallpaper.
+         - The rest are game actions; may be no-op if not needed by a particular game.
+     */
     protected abstract void draw(Canvas canvas);
     protected abstract void moveLeft();
     protected abstract void moveRight();
     protected abstract void moveUp();
     protected abstract void moveDown();
+    protected abstract void fire();
 //    protected abstract void dPadLeft();
 //    protected abstract void dPadRight();
 //    protected abstract void dPadUp();
 //    protected abstract void dPadDown();
-    protected abstract void fire();
 
     protected class GameEngine 
             extends Engine 
@@ -80,6 +95,9 @@ public abstract class GameWallpaperService
         private IntentFilter actionFilter;
         protected SharedPreferences settings;
 
+        /**
+         * Processes action broadcasts from game controller widgets
+         */
         private BroadcastReceiver actionReceiver = new BroadcastReceiver() {
             @TargetApi(Build.VERSION_CODES.N_MR1)
             @Override
@@ -111,18 +129,6 @@ public abstract class GameWallpaperService
                 }
 
                 switch (intent.getAction()) {
-//                    case ArcadeCommon.ACTION_DPAD_UP:
-//                        dPadUp();
-//                        break;
-//                    case ArcadeCommon.ACTION_DPAD_DOWN:
-//                        dPadDown();
-//                        break;
-//                    case ArcadeCommon.ACTION_DPAD_LEFT:
-//                        dPadLeft();
-//                        break;
-//                    case ArcadeCommon.ACTION_DPAD_RIGHT:
-//                        dPadRight();
-//                        break;
                     case ArcadeCommon.ACTION_UP:
                         moveUp();
                         break;
@@ -138,10 +144,26 @@ public abstract class GameWallpaperService
                     case ArcadeCommon.ACTION_FIRE:
                         fire();
                         break;
+//                    case ArcadeCommon.ACTION_DPAD_UP:
+//                        dPadUp();
+//                        break;
+//                    case ArcadeCommon.ACTION_DPAD_DOWN:
+//                        dPadDown();
+//                        break;
+//                    case ArcadeCommon.ACTION_DPAD_LEFT:
+//                        dPadLeft();
+//                        break;
+//                    case ArcadeCommon.ACTION_DPAD_RIGHT:
+//                        dPadRight();
+//                        break;
                 }
             }
         };
 
+        /**
+         * Game logic should send STATUS* updates as extras to LocalBroadcastManager messages
+         * that will be received here and displayed as a game status "scoreboard" notification.
+         */
         private BroadcastReceiver statusReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -159,7 +181,6 @@ public abstract class GameWallpaperService
                 NotificationManager notifMgr =
                         (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
                 notifViews.setTextViewText(R.id.score, getString(R.string.score, score));
-
 
                 int newLevel = intent.getIntExtra(ArcadeCommon.STATUS_LEVEL, level);
                 if (newLevel != level) {
@@ -215,8 +236,11 @@ public abstract class GameWallpaperService
             }
         };
 
+        /**
+         * This timer implements the "game loop", showing instructions if needed, otherwise calling
+         * descendants' draw() method to get the actual game game graphics.
+         */
         private class GameTask extends TimerTask {
-
             @Override
             public void run() {
                 updateSurface();
@@ -278,6 +302,7 @@ public abstract class GameWallpaperService
                         metaView.draw(canvas);
                     }
                 } else if (getState() != STATE_PAUSED) {
+                    // Show the actual game graphics from descendant class
                     canvas = holder.lockCanvas();
                     if ((canvas != null) && (canvas.getWidth() > 0) && (canvas.getHeight() > 0)) {
                         draw(canvas);
@@ -373,6 +398,12 @@ public abstract class GameWallpaperService
             }
         }
 
+        /**
+         * Game wallpaper subclasses should implement this method to check what game control 
+         * widgets they require versus which ones are currently active. 
+         * 
+         * @return an array of widget class names required by the game but not active
+         */
         protected String[] getMissingWidgets() {
             if (settings == null) {
                 settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
@@ -406,6 +437,10 @@ public abstract class GameWallpaperService
             }
         }
 
+        /**
+         * When game control widgets are added to or removed from the launcher, this restarts the
+         * game loop to update the instructions (if needed).
+         */
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             if (//key.equals(DPadWidget.class.getSimpleName()) ||
@@ -443,14 +478,6 @@ public abstract class GameWallpaperService
             this.level = level;
         }
 
-        protected void resetGame() {
-
-        }
-
-        protected void restartGame() {
-//            readyTime = System.currentTimeMillis() - 2000;
-        }
-
         public int getState() {
             if (getMissingWidgets().length > 0) {
                 return STATE_NOT_READY;
@@ -463,6 +490,18 @@ public abstract class GameWallpaperService
             } else {
                 return STATE_RUNNING;
             }
+        }
+
+        /*
+         * Subclasses should implement these two methods as needed to interface with game-specific 
+         * logic:
+         * 
+         * reset: clear game status in preparation for a new session.
+         * restart: get the game action underway
+         */
+        protected void resetGame() {
+        }
+        protected void restartGame() {
         }
     }
 }

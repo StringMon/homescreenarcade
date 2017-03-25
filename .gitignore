@@ -7,4 +7,4 @@
 /build
 /captures
 .externalNativeBuild
-/Project/archive/*
+/meta/archive/*
