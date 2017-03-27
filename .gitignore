@@ -8,3 +8,7 @@
 /captures
 .externalNativeBuild
 /meta/archive/*
+/meta/releases/*
+*.keystore
+*.jks
+desktop.ini
