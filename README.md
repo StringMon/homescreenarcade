@@ -18,7 +18,7 @@ If you're interested in the **platform**'s source, the core is `GameWallpaperSer
 
 Subclasses of `GameWallpaperService` serve as the interface between *Home Screen Arcade* and the actual game code. Like all wallpaper services, each implements both the `Service` and its inner `Engine` class. Each is responsible for managing the lifecycle of the game itself, and also implements an `onDraw` method, which is where the game's graphics get transferred to a `Canvas` that will be shown on the device's home screen.
 
-##Credits and Licensing
+## Credits and Licensing
 
 *Invaders* is adapted from [Android Space Invaders](https://sourceforge.net/projects/droidspceinvdrs) under the GNU General Public License 3.0. The original Space Invaders game is Copyright (C) 1978 Taito Corporation.
 
